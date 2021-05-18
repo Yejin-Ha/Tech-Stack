@@ -1,4 +1,4 @@
-# 필요한 전공 지식을 공부합니다.
+# :page_with_curl: 필요한 전공 지식을 공부합니다.
 ## 1. python
 ## 2. RDBMS
 ## 3. JavaScript
