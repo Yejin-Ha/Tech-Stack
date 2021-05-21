@@ -9,7 +9,7 @@
 # Data Type
 **boolean, integer, float, string, ... etc**
 ```python
-type(x)     # x의 자료형을 확인하는 메소드
+type(x)     # x의 자료형을 확인하는 함수
 ```
 - 숫자
     - / : 부동소수점을 포함해서 출력
@@ -24,28 +24,28 @@ type(x)     # x의 자료형을 확인하는 메소드
         len(str)       # str의 길이(크기)를 알려주는 함수
         str[-1]        # str의 길이에 상관없이 맨 마지막 글자를 출력함(이게 slicing 속성이다.)
         ```
+    - 표현식
+        ```python
+        print('value %s' % (data))      # %s 위치에 data를 대입하는 %s 표현식
+        # %d : 정수 표현 / %s : 문자 표현 / %f : 부동 소수 표현
+        print('{}, {}'.format(data1, data2))    # data1, data2를 {}안에 순서대로 넣는 표현식
+        print(f'{data}입니다.')     # f-string : 미리 선언된 data 변수를 바로 출력할 수 있음
+        ```
+    - 자주 사용되는 함수
+        ```python
+        string.strip()      # string 앞뒤의 여백을 제거
+        string.strip('a')      # string 앞뒤의 a를 제거
+        string.lstrip()     # string 왼(앞)쪽의 잉여 여백을 제거
+        string.rstrip()     # string 오른(뒤)쪽의 잉여 여백을 제거
+
+        string.split(t, n)      # string을 t를 기준으로 구분하고 n만큼 분리한 문자열 리스트 반환
+        reversed(string)    # string을 역으로 변환된 객체의 주소값을 반환
+        ''.join(reversed(string))   # 역으로 된 문자열 데이터를 가공하는 로직
+        ```
 
 - 형변환
     ```python
     int( 숫자 / 계산식 / 문자열 )     # 정수로 변환
     str()       # 문자열로 변환
     float( 숫자 / 계산식 / 문자열 )     # 실수로 변환
-    ```
-
-- list, tuple, dictionary, set
-    |타입|문법|특이사항|
-    |------|---|---|
-    |list|[ ]|- 혼합 자료형 : 다양한 타입을 한번에 저장할 수 있음<br>- 리스트 안에 리스트를 생성할 수 있다. = 내장리스트|
-    |tuple|( )|- 변경 불가능한 리스트<br>- 고유한 index가 존재한다.<br>- 연산이 가능하다.|
-    |dictionary|{ key : value, ... }|- json 포멧과 흡사<br>- key로 value값 구분<br>- value : 실제 사용되는 데이터<br>- key는 중복되지 않는다.<br>- get() / items() / keys() / values() / update() 메소드 사용 가능|
-    |set|{ value, ... }|- 중복되지 않고 순서가 없는 항목들<br>- issubset() / issuperset() / union() / intersection() / difference() 메소드 사용 가능|
-
-    ```python
-    lst = list()      # 공백 리스트 생성
-    lst2 = []       # 공백 리스트 생성
-    list2 = [["Seoul", 10], ["Paris", 12], ["London", 50]]      # 혼합 자료형, 내장 리스트
-    [list] + [list]     # 연산자로 새로운 list 생성 가능
-
-    t = 'test', 'test1', 'test2'        # 괄호없이 나열된 객체들도 tuple로 간주
-    (tuple) + (tuple)     # 연산자로 새로운 tuple 생성 가능
     ```
