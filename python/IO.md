@@ -1,0 +1,43 @@
+# 데이터 입출력, IO(input / output)
+- 데이터 입출력 기본 : 오픈 -> 사용 -> 자원 반환
+    1. 파일 안에 바이트들이 순차적으로 저장되어 있고 맨 끝에는 <font color='yellow'>EOF(end-of-file)</font>마커가 있다.
+    2. 모든 파일은 위치 표시자(position indicator)를 갖고 있다.
+    3. 텍스트 파일을 읽거나 쓸 수 있다.
+
+- 문법
+    ```python
+    open("file경로/file이름", 파일열기모드, 인코딩)
+    ```
+    - 파일 열기 모드
+        1. r : 읽기 모드(파일의 처음부터 read)
+        2. w : 쓰기 모드(파일의 처음부터 쓰기, 파일이 없으면 생성, 존재하면 기존 내용을 지우고 새로 작성)
+        3. a : 추가 모드(파일의 끝에 씀, 파일이 없으면 생성)
+        4. r+ : 읽기 쓰기 모드(파일에 읽고 쓸 수 있는 모드)
+    - 인코딩
+        - 한글 데이터를 고려한다면 <font color='yellow'>utf-8</font>를 적용해야 한다.
+
+- 예시
+    - 파일 생성 -> 데이터 출력
+    ```python
+    f = open('output.txt', 'w', encoding='utf-8')
+    
+    f.write('hi')
+    f.write('python')       # hipython이라고 저장된다.
+    
+    # 자원 반납은 필수
+    f.close()
+    ```
+    - with으로 시작되는 IO는 close()를 자동으로 호출한다.
+    ```python
+    with open('output.txt', 'r', encoding='utf-8') as f:
+        print(f.read())     # hipython이 출력된다.
+    ```
+    - 줄 단위로 파일에 입력하기
+        1. writelines(리스트) : 리스트에 있는 항목들이 순서대로 입력된다.
+        2. join(리스트) 
+
+    - 파일 데이터 읽기
+        1. read() : 파일의 모든 내용 read
+        2. readline() : 파일의 첫 line read
+        3. readlinews() : 파일의 모든 내용을 list 형태로 read
+
