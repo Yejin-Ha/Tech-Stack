@@ -39,6 +39,6 @@
 |함수명|문법|특징|
 |-----|----|----|
 |map( )|map(함수, 리스트)|- 리스트의 모든 항목에 함수를 적용한 결과 리스트를 반환<br>- list()를 사용하지 않으면 주소값이 출력된다.<br>- 함수 자리에 lambda식도 많이 사용한다.|
-|reduce( )|reduce(함수, 리스트)|- 사용을 위해서는 from funtools import reduce 선언 필수<br>- 집계용으로 주로 사용된다.<br>- 리스트의 모든 항목을 함수에 따라서 정리한다.|
+|reduce( )|reduce(함수, 리스트)|- 사용을 위해서는 from functools import reduce 선언 필수<br>- 집계용으로 주로 사용된다.<br>- 리스트의 모든 항목을 함수에 따라서 정리한다.|
 |filter( )|filter(함수, 데이터들)|- 시퀀스의 항목들 중 함수 조건에 True인 항목들만 추출|
 |collection 함수 -> enumerate( )|enumerate(데이터들, start=숫자)|- 데이터들을 start 숫자부터 순서를 매기는 함수|
