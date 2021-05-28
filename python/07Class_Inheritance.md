@@ -93,3 +93,44 @@ n2 = SpecialMethod(30, 40)
 print(n1 + n2)      # (40, 60) 출력
 print(n1 == n2)     # False 출력
 ```
+<br>
+<br>
+
+# Class Inheritance(클래스 상속)
+## 상속
+코드의 재사용성을 위한 구조
+이미 존재하는 클래스를 상속받아 새로운 자식 클래스 생성
+- 상속 문법 
+    - class 자식클래스명(부모클래스명)
+    - 자식 생성자에서 부모 생성자 호출 - super().\_\_init__(인수)
+    ```python
+    class Parent:
+        def __init__(self, name):
+            self.name = name
+
+    class Child(Parent):
+        def __init__(self, name, age):
+            super().__init__(name)  # Parent 클래스의 __init__ 함수를 재사용
+            self.age = age
+    ```
+- 매소드 재정의
+    ```python
+    class Parent:
+        def __init__(self, name):
+            self.name = name
+        
+        def eat(self):
+            print('부모 클래스')
+
+    class Child(Parent):
+        def __init__(self, name, age):
+            super().__init__(name)  # Parent 클래스의 __init__ 함수를 재사용
+            self.age = age
+
+        # 부모 클래스의 eat()메소드를 자식 클래스에서 재정의한다.
+        def eat(self):
+            print('자식 클래스')
+    ```
+- 다형성 
+    - 코드의 재사용성 및 간결성을 위함
+    

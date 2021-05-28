@@ -7,5 +7,5 @@
 ### - [함수](./04Function.md)
 ### - [Comprehension](./05Comprehension.md)
 ### - [예외 처리(try, except, else, finally)](./06Exception.md)
-### - [클래스](./07Class.md)
+### - [클래스, 상속](./07Class_Inheritance.md)
 
