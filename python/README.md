@@ -1,5 +1,5 @@
 # :cherry_blossom: 바로가기 :cherry_blossom:
-<font color="blue">파란 글씨</font>를 누르면 해당 내용으로 이동합니다. 😊
+**파란 글씨**를 누르면 해당 내용으로 이동합니다. 😊
 
 ### - [기초 설명](./01Intro.md)
 ### - [반복문](./02Loop_DataType.md)
