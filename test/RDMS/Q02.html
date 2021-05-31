@@ -1,0 +1,201 @@
+<html>
+<header>
+<title>Review Test by 손유진, 하예진</title>
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
+<style>
+      body {font-family: 'Nanum Gothic', sans-serif;}
+      h1 {margin : 1rem;}
+      details {padding : 1rem; white-space: pre-wrap;}
+      .question {margin : 2rem; padding : 1rem; border: 1px solid gray;}
+</style>
+</header>
+
+<body>
+
+<h1>REVIEW TEST</h1>
+
+<div class='question' id='Q1'>
+
+      <h4>1. EMPLOYEES table 에서 폰넘버 123이 들어간 사람중 hire_dat 에 따라 내림차순으로 정렬 내림차순</h4>
+      
+      <details>
+            <summary>모범 답안</summary>
+            <strong>select</strong> Employee_id, FIRST_NAME, phone_number
+            <strong>from</strong> EMPLOYEES
+            <strong>where</strong> PHONE_NUMBER <strong>like</strong> '%123%'
+            <strong>order by</strong> HIRE_DATE <strong>desc</strong>;
+
+
+            EMPLOYEE_ID FIRST_NAME                               PHONE_NUMBER
+            ----------- ---------------------------------------- ----------------------------------------
+                    124 Kevin                                    650.123.5234
+                    123 Shanta                                   650.123.4234
+                    101 Neena                                    515.123.4568
+                    202 Pat                                      603.123.6666
+                    121 Adam                                     650.123.2234
+                    120 Matthew                                  650.123.1234
+                    201 Michael                                  515.123.5555
+                    200 Jennifer                                 515.123.4444
+                    137 Renske                                   650.121.1234
+                    100 Steven                                   515.123.4567
+                    122 Payam                                    650.123.3234
+                    206 William                                  515.123.8181
+                    203 Susan                                    515.123.7777
+                    204 Hermann                                  515.123.8888
+                    205 Shelley                                  515.123.8080
+                    102 Lex                                      515.123.4569
+      </details>
+</div>
+
+<div class='question' id='Q2'>
+
+      <h4> 2. LOCATIONS table에서 state_province가 null인 LOCATION_ID, STREET_ADDRESS, CITY를 출력하세요.</h4>
+      
+      <details>
+            <summary>모범 답안</summary>
+            <strong>select</strong> LOCATION_ID, STREET_ADDRESS, CITY
+            <strong>from</strong> LOCATIONS
+            <strong>where</strong> state_province <strong>is null</strong>;
+
+
+
+            LOCATION_ID STREET_ADDRESS                                                       CITY
+            ----------- -------------------------------------------------------------------- ---------------------------------------------------------
+            1000 1297 Via Cola di Rie                                                             Roma
+            1100 93091 Calle della Testa                                                          Venice
+            1300 9450 Kamiya-cho                                                                  Hiroshima
+            2000 40-5-12 Laogianggen                                                              Beijing
+            2300 198 Clementi North                                                               Singapore
+            2400 8204 Arthur St                                                                      London
+      </details>
+</div>
+
+<div class='question' id='Q3'>
+
+      <h4>3. JOB_HISTORY table에서 EMPLOYEE_ID, 근무일수, JOB_ID, DEPARTMENT_ID를 근무일수에 대한 내림차순으로 출력하세요.</h4>
+      
+      <details>
+            <summary>모범 답안</summary>
+            <strong>select</strong> EMPLOYEE_ID, (END_DATE - START_DATE) as 근무일수 , JOB_ID, DEPARTMENT_ID
+            <strong>from</strong> JOB_HISTORY
+            <strong>order by</strong> 근무일수 <strong>desc</strong>;
+
+
+            EMPLOYEE_ID   근무일수      JOB_ID               DEPARTMENT_ID
+            ------------------ --------------- -------------------- ---------------
+                  200               2100         AD_ASST                         90
+                  102               2018          IT_PROG                         60
+                  200               1644          AC_ACCOUNT                90
+                  101               1497          AC_ACCOUNT               110
+                  201               1401          MK_REP                          20
+                  101               1234          AC_MGR                         110
+                  114               647            ST_CLERK                       50
+                  176               364            SA_MAN                         80
+                  122               364           ST_CLERK                        50
+                  176               282           SA_REP                          80
+      </details>
+
+</div>
+
+<div class='question' id='Q4'>
+
+      <h4>4. DEPARTMENTS table에서 LOCATION_ID를 다음 조건에 따라 지역 이름을 바꾸고 DEPARTMENT_ID, DEPARTMENT_NAME, MANAGER_ID, 지역을 출력하세요.</h4>
+            1700 - 서울, 
+            1400 - 인천, 
+            1500 - 광주, 
+            1800 - 울산, 
+            2400 - 부산, 
+            2500 - 세종, 
+            2700 - 제주도
+      </h4>
+      
+      <details>
+            <summary>모범 답안</summary>
+            <strong>select</strong> DEPARTMENT_ID, DEPARTMENT_NAME, MANAGER_ID, decode(LOCATION_ID, 1400, '인천',
+                                                                                                1500, '광주',
+                                                                                                1700, '서울',
+                                                                                                1800, '울산',
+                                                                                                2400, '부산',
+                                                                                                2500, '세종',
+                                                                                                2700, '제주도') as 지역
+
+            <strong>from</strong> DEPARTMENTS;
+
+
+            DEPARTMENT_ID DEPARTMENT_NAME                                MANAGER_ID   지역
+            ------------- ------------------------------------------------------------ ----------------- ------------------
+           10                Administration                                                      200               서울
+           20                Marketing                                                             201                울산
+           30                 Purchasing                                                           114                서울
+           40                 Human Resources                                                203                부산
+           50                 Shipping                                                              121                광주
+           60                 IT                                                                        103                인천
+           70                 Public Relations                                                   204                제주도
+           80                 Sales                                                                   145                세종
+           90                 Executive                                                           100                서울
+          100                 Finance                                                             108                서울
+          110                 Accounting                                                        205                서울
+          120                 Treasury                                                                                       서울
+          130                 Corporate Tax                                                                          서울
+          140                 Control And Credit                                                                   서울
+          150                 Shareholder Services                                                                서울
+          160                 Benefits                                                                               서울
+          170                 Manufacturing                                                                          서울
+          180                 Construction                                                                           서울
+          190                 Contracting                                                                            서울
+          200                 Operations                                                                             서울
+          210                 IT Support                                                                             서울
+          220                 NOC                                                                                    서울
+          230                 IT Helpdesk                                                                            서울
+          240                 Government Sales                                                                  서울
+          250                 Retail Sales                                                                           서울
+          260                 Recruiting                                                                             서울
+          270                 Payroll                                                                                서울
+
+      </details>
+
+</div>
+
+<div class='question' id='Q5'>
+
+      <h4>5. EMPLOYEES table에서 hire_date 기준으로 17년 이상 근무한 사람의 salary를 1.2배 인상하기로 했다. job_id, first_name, last_name, 인상결과를 출력하고 고용일 기준으로 오름차순으로 정렬하세요.
+      </h4>
+      
+      <details>
+            <summary>모범 답안</summary>
+            <strong>select</strong> JOB_ID, FIRST_NAME, LAST_NAME, SALARY * 1.2 AS 인상결과
+            <strong>from</strong> EMPLOYEES
+            <strong>where</strong> round(sysdate - HIRE_DATE) > 365*17
+            <strong>order by</strong> HIRE_DATE <strong>asc</strong>;
+
+            
+
+            JOB_ID               FIRST_NAME                               LAST_NAME                                            인상결과
+            -------------------- ---------------------------------------- -------------------------------------------------- ----------
+            AD_VP                Lex                                      De Haan                                                 20400
+            AC_MGR               Shelley                                  Higgins                                               14409.6
+            AC_ACCOUNT           William                                  Gietz                                                    9960
+            PR_REP               Hermann                                  Baer                                                    12000
+            HR_REP               Susan                                    Mavris                                                   7800
+            FI_ACCOUNT           Daniel                                   Faviet                                                  10800
+            FI_MGR               Nancy                                    Greenberg                                             14409.6
+            PU_MAN               Den                                      Raphaely                                                13200
+            ST_MAN               Payam                                    Kaufling                                                 9480
+            PU_CLERK             Alexander                                Khoo                                                     3720
+            AD_PRES              Steven                                   King                                                    28800
+            ST_CLERK             Renske                                   Ladwig                                                   4320
+            AD_ASST              Jennifer                                 Whalen                                                   5280
+            ST_CLERK             Trenna                                   Rajs                                                     4200
+            SH_CLERK             Nandita                                  Sarchand                                                 5040
+            SA_REP               Janette                                  King                                                    12000
+            SH_CLERK             Sarah                                    Bell                                                     4800
+            MK_MAN               Michael                                  Hartstein                                               15600
+            SA_REP               Patrick                                  Sully                                                   11400
+            SA_REP               Ellen                                    Abel                                                    13200
+      </details>
+</div>
+
+
+</body>
+</html>
+
