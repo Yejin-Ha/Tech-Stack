@@ -13,3 +13,4 @@
 ## 📝 test
 공부한 이론으로 간단한 문제들을 만듭니다.
 - [**about python**](./test/python)
+- [**about RDBMS**](./test/RDBMS)
