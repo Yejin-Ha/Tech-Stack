@@ -1,15 +1,19 @@
 # 문제 소개
 <details>
-    <summary>Q01 </summary>
-
+    <summary><strong>Q01. SELECT, FROM, WHERE, ORDER BY 를 사용하여 review 문제 만들기</strong></summary><br>
+    <strong>with</strong> [반재광](https://github.com/vankze34), [이재선](https://github.com/Sun1203)<br>
+    <strong>My role</strong><br>
+    &nbsp;&nbsp;&nbsp;1. 1, 5번 문제 제작<br>
+    &nbsp;&nbsp;&nbsp;2. sql 파일 제작<br>
 </details>
-
+<br>
 <details>
     <summary><strong>Q02. 간단한 Query문을 사용하여 review 문제 만들기</strong></summary>
-    <strong>with</strong> 손유진 @sonyujin95<br>
+    <strong>with</strong> [손유진](https://github.com/sonyujin95)<br>
     <strong>My role</strong><br>
     &nbsp;&nbsp;&nbsp;1. 주어진 table을 전체적인 구조 파악<br>
     &nbsp;&nbsp;&nbsp;2. 아이디어 제공<br>
-    &nbsp;&nbsp;&nbsp;3. html 생성<br>
+    &nbsp;&nbsp;&nbsp;3. html 파일 제작<br>
 
 </details>
+<br>
