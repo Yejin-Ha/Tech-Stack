@@ -1,0 +1,61 @@
+<html>
+<header>
+<title> OUTER JOIN 문제 만들기</title>
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
+<style>
+body {font-family: 'Nanum Gothic', sans-serif;}
+h1 {margin : 1rem;}
+details {padding : 1rem; white-space: pre-wrap;}
+.question {margin : 2rem; padding : 1rem; border: 1px solid gray;}
+</style>
+</header>
+
+<body>
+
+<h1>[OUTER JOIN 문제 _하예진, 이현수, 손정현]</h1>
+
+<div class='question' id='Q1'>
+
+      <h4>  1. hire_date = start_date인 데이터 중 JOB이 IT_PROG인 사람들의 이름(first_name)을 출력해라.</h4>
+            (EMPLOYEES 와 JOB_HISTORY table을 사용)
+      
+      <details>
+            <summary>모범 답안</summary>
+            <strong>SELECT</strong> e.first_name
+            <strong>FROM</strong> employees e, job_history j
+            <strong>WHERE</strong> e.hire_date = j.start_date <strong>AND</strong> j.job_id = 'IT_PROG';
+
+            FIRST_NAME
+            ------------------------
+            Lex
+            
+      </details>
+
+</div>
+
+
+<div class=question id=Q2>
+      <h4>2. 두 table의 REGION_ID를 join한 후 각 REGION_NAME의 개수를 COUNT하여
+        6개이상의 REGION_NAME, count 개수를 출력하시오.</h4>
+            (REGIONS와 COUNTRIES table사용)</h4>
+
+      <details>
+            <summary>모범 답안</summary>
+            <strong>SELECT</strong>       region_name, count(region_name)
+            <strong>FROM</strong>         countries c, regions r
+            <strong>WHERE</strong>        c.region_id = r.region_id
+            <strong>GROUP BY</strong>     region_name
+            <strong>HAVING</strong>       count(region_name)>=6;
+
+            REGION_NAME                                 COUNT(REGION_NAME)
+            ------------------------------------------- --------------------------
+            Middle East and Africa                      6
+            Europe                                               8
+            Asia                                                    6
+            Americas                                           5
+
+      </details>
+</div>
+
+</body>
+</html>
