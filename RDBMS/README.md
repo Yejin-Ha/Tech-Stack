@@ -3,13 +3,14 @@
 
 ### :pushpin:[SELECT, FROM, ORDER BY, WHERE](./01SELECT_FROM_ORDERBY_WHERE.sql)
 
-### :pushpin:[숫자 함수, 날짜 함수, 형변환 함수](./02Functions.sql)
+### :pushpin:[숫자 함수, 날짜 함수, 형변환 함수, DECODE](./02Functions.sql)
 
+### :pushpin:[GROUP BY, HAVING, 그룹 함수](./03SelectGroupFunction.sql)
 
 
 <details>
-    <summary><strong>:pushpin:참고 사항</strong></summary><br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :link: [정리된 파일로 바로가기 :dash:](./참고사항.md)<br>
+    <summary><strong>:pushpin: 참고 사항.md</strong></summary><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 참고 사이트<br>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 문자 입력시 주의사항<br>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 부정 연산자<br>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 화면 설정<br>

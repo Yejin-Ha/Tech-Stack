@@ -184,3 +184,26 @@ select to_number('20,000', '99,999') from dual;
    ----------------------------
                           20000 */
 
+
+
+/* ***[조건식 함수]***
+- decode() : if or switch문 과 같은 함수
+- syntax
+    decode(조건칼럼, 조건값1,  출력데이터1,
+		   조건값2,  출력데이터2,
+			...,
+		   default값) from table명;
+
+*/
+
+-- dept table에서 10번 부서인 경우 A등급, 20번 부서는 B등급, 나머지는 C등급으로 출력
+select deptno, decode(deptno, 10, 'A등급',
+                              20, 'B등급',
+                              'C등급') as 등급
+from dept;
+/*     DEPTNO 등급
+   ---------- --------------
+           10 A등급
+           20 B등급
+           30 C등급
+           40 C등급 */
