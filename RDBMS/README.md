@@ -9,11 +9,11 @@
 
 <details>
     <summary><strong>:pushpin:참고 사항</strong></summary><br>
-     :link: [정리된 파일로 바로가기 :dash:](./참고사항.md)<br>
-    - 문자 입력시 주의사항
-    - 부정 연산자
-    - 화면 설정
-    - dual 테이블
-    - 별칭
-    - nvl 함수
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :link: [정리된 파일로 바로가기 :dash:](./참고사항.md)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 문자 입력시 주의사항<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 부정 연산자<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 화면 설정<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- dual 테이블<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 별칭<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- nvl 함수<br>
 </details>
