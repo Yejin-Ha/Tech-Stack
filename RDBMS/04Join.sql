@@ -67,11 +67,12 @@ where e.ename = 'SMITH' and e.mgr = m.empno;
 
 -- 4. outer join
 -- emp table에서 모든 사원명과 메니저명을 검색. 단, 메니저가 없는 사원도 검색되어야 한다.
-
+/* 문제 풀이
+emp table을 보면 모든 데이터(row)에는 empno는 존재하지만 mgr(메니저 사번)은 존재하지 않는 데이터도 있다.
+이런 경우 outer join을 사용하지 않으면 mgr이 없는 데이터들은 해당이 안되기 때문에
+	( -> mgr이 empno의 부분집합이 된다고 생각했다. )
+조건절에서 e.mgr = m.empno(+) 이렇게 empno에 + 연산자를 붙여야한다.
+*/
 select e.ename 사원명, m.ename 메니저명
 from emp e, emp m
 where e.mgr=m.empno(+);
-
-
-
-
