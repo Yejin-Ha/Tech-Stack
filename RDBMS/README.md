@@ -11,6 +11,7 @@
 
 ### :pushpin:[SubQuery](./05SubQuery.sql)
 
+### :pushpin:[DDL(create, drop, alter, rollback)](./06DDL.sql)
 
 
 <details>
