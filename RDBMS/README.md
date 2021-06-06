@@ -7,6 +7,11 @@
 
 ### :pushpin:[GROUP BY, HAVING, 그룹 함수](./03SelectGroupFunction.sql)
 
+### :pushpin:[Join](./06Join.sql)
+
+### :pushpin:[SubQuery](./05SubQuery.sql)
+
+
 
 <details>
     <summary><strong>:pushpin: 참고 사항.md</strong></summary><br>
@@ -17,4 +22,5 @@
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- dual 테이블<br>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 별칭<br>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- nvl 함수<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 불필요한 table 삭제 명령어<br>
 </details>
