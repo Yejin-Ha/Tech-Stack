@@ -32,6 +32,7 @@
     - 삭제, 복원이 가능하다.
     - 복원시 명령어 : rollback;
         - 영구 저장(commit)된 시점을 A라 가정하면 그 이후의 삭제된 내용이 복구 가능하다.
+        - commit 명령어를 사용하여 데이터를 영구 저장하는 것도 필수
 
 - truncate table <테이블명>;
     - 삭제후 복원이 불가능하다.
@@ -70,3 +71,7 @@ alter table emp01 add(job varchar2(10));
 
 --emp01 table의 job 컬럼의 데이터 사이즈를 20으로 변경
 alter table emp01 modify (job varchar2(20));
+
+
+-- 복구 불가능한 데이터 삭제
+truncate table emp01;

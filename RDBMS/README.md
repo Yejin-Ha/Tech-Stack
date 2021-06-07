@@ -13,6 +13,9 @@
 
 ### :pushpin:[DDL(create, drop, alter, rollback)](./06DDL.sql)
 
+### :pushpin:[DML(insert, update, delete, merge)](./07DML.sql)
+
+### :pushpin:[Integrity](./08Integrity.sql)
 
 <details>
     <summary><strong>:pushpin: 참고 사항.md</strong></summary><br>
