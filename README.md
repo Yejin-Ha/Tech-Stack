@@ -10,6 +10,10 @@
 
 <br>
 
+## 응용?
+Oracle DB와 python을 연동하는 방법에 대해 공부
+- [**cx_Oracle**](./cx_Oracle)
+
 
 ## 📝 test
 공부한 이론으로 간단한 문제들을 만듭니다.
