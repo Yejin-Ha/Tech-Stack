@@ -6,7 +6,7 @@ Question01.
 
 # 문제 풀이 & 무조건 실행되는 구문 정리
 conn = cx_Oracle.connect(user='SCOTT', password='TIGER', dsn='xe')
-    - 해당 문장에 오류가 나면 아예 접근이 불가능하므로 try문에 대입하여 코드를 시작한다.
+    - 해당 문장에 오류가 나면 아예 접근이 불가능하므로 첫 try문에 대입하여 코드를 시작한다.
 
 cur = conn.cursor()
     - conn이 정상적으로 실행될 경우에만 실행할 수 있다. 고로 else문에 대입한다.
