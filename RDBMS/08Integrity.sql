@@ -21,6 +21,7 @@ table 생성시 제약조건을 설정하는 기법
 
     2-2. not null 
         - 반드시 데이터 존재
+		- nn 
 
     2-3. unique 
         - 중복 불가 
@@ -43,6 +44,7 @@ table 생성시 제약조건을 설정하는 기법
 
 
 # 제약 조건명 명시하는 방법
+	- 약어를 넣을 경우 constraint 키워드를 통해 제약 조건을 설정해야 한다.
 	1-1. oracle engine이 기본적으로 설정
 		- 사용자가 제약 조건에 별도의 이름을 부여하지 않으면 오라클 자체적으로 SYS_시작하는 이름을 자동 부여
 		- SYS_Xxxx
@@ -99,4 +101,8 @@ table 생성시 제약조건을 설정하는 기법
 			- R : reference key
 */
 
-
+-- empno 컬럼에 emp02_empno_nn 라는 약어와 not null이라는 제약조건을 설정했다.
+create table emp01 (
+	empno number(4) constraint emp02_empno_nn not null,
+	ename varchar2(10)
+);
