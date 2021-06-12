@@ -27,4 +27,6 @@
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 별칭<br>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- nvl 함수<br>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 불필요한 table 삭제 명령어<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 데이터 타입<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- REM(주석)<br>
 </details>

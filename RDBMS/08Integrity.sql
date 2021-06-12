@@ -6,6 +6,7 @@
 # Integrity란? 
 table 생성시 제약조건을 설정하는 기법 
 
+# 하나의 컬럼에 두개 이상의 제약조건을 넣지 않는 것을 추천한다.
 
 # 제약 조건 종류
     - emp와 dept의 관계
@@ -189,3 +190,24 @@ delete from dept01 where deptno >= 60;
 -- 2. 
 drop table dept01 cascade constraint;
 
+
+
+/* check (ck)
+if 조건식과 같이 저장 직원의 데이터와 유효 유무 검증하는 제약조건
+입력된 데이터가 조건에 해당하지 않으면 error가 난다.
+
+
+*/
+-- 입력된 데이터가 100 이하의 양의 정수라면 age에 저장한다는 조건
+create table emp01 (
+	name varchar2(10) not null,
+	age number(3) constraint ck_emp01_age check (age between a and 100)
+);
+
+
+
+-- defaul : 데이터 insert 시 데이터를 생략해도 자동으로 db에 저장되는 기본값
+create table emp01 (
+	id varchar2(10) primary key,
+	gender char(1) default 'F'
+);
