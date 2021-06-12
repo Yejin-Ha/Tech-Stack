@@ -57,6 +57,7 @@ table 생성시 제약조건을 설정하는 기법
 		- 약어 사용도 가능[분석, 설계시 용어사전 제시후 작성 권장]
 		- PK를 중복되게 값을 넣을 경우
 			- ORA-00001: unique constraint (SCOTT.PK_DEPT) violated
+		- 사실상 not null만 있는 제약조건 설정시에는 이름을 부여하지는 않는다.
 
 
 # 제약조건 선언 위치
@@ -106,3 +107,85 @@ create table emp01 (
 	empno number(4) constraint emp02_empno_nn not null,
 	ename varchar2(10)
 );
+
+-- 다음 명령문은 emp02 table의 제약조건들의 약어, 종류, 테이블 명을 검색한다.
+-- where절에 table명을 입력할 때 대문자로 입력해야 된다는 것을 잊지 말자!
+select constraint_name, constraint_type, table_name
+from user_constraints where table_name='EMP02';
+
+/* 제약 조건명을 설정하는 이유
+설정하지 않을 경우와 설정할 경우의 예시를 통해 알 수 있다.
+에러 메세지 안에 SCOTT.메세지가 다르다.
+그래서 제약 조건명을 설정한 경우 에러가 나면 쉽게 찾을 수 있다.
+*/
+-- 설정하지 않을 경우
+insert into emp02 values(1, 'master');
+	-- ORA-00001: unique constraint (SCOTT.SYS_C007010) violated
+-- 설정할 경우
+insert into emp02 values(1, 'master');
+	-- ORA-00001: unique constraint (SCOTT.EMP02_EMPNO_U) violated
+
+
+
+/* 외래키(참조키, fk) 사용 예시
+이미 제약 조건이 설정된 dept table의 pk컬럼인 deptno를 기준으로 emp02 table의 deptno에도 반영
+	syntax : constraint <제약 조건명> references 참조할 테이블명(참조할 컬럼명)
+
+다음의 경우 dept table의 deptno가 부모(주) / emp02 table의 deptno가 자식(종) 이 된다.
+*/
+create table emp02(
+	empno number(3),
+	deptno number(2) constraint fk_emp02_deptno references dept(deptno),
+);
+
+
+
+/* 제약 조건 설정을 하는 방법
+1. 컬럼 선언시 함께 설정(컬럼 레벨 단위)
+2. 컬럼 선언 마지막에 한번에 설정(테이블 단위)
+	문법 : constraint <제약 조건명> <제약 조건 종류> (지정하려는 컬럼명)
+*/
+create table emp02(
+	empno number(4) constraint pk_emp02_empno primary key,
+	ename varchar2(20) not null
+);
+
+create table emp02(
+	empno number(4),
+	ename varchar2(20) not null,
+	constraint pk_emp02_empno primary key (empno)
+);
+
+create table emp02(
+	empno number(4),
+	ename varchar2(20) not null,
+	deptno number(2),
+	constraint pk_emp02_empno primary key (empno),
+	constraint fk_emp02_deptno references dept(deptno)
+);
+
+
+
+-- create 와 as select 로 복제되는 table은 원본 table 데이터와 구조는 복사가 되나 제약조건은 복제되지 않는다.
+-- 존재하는 table에 제약조건을 추가하려면 다음을 참고하라.
+-- dept01 table에 deptno를 pk로 설정하는 예시
+alter table dept01 add constraint pk_dept01_deptno primary key (deptno);
+
+-- dept01 table의 deptno를 참조하여 emp01 table에 deptno 컬럼에 제약 조건을 걸 경우
+alter table emp01 add constraint fk_emp01_deptno foreign key (deptno)
+	references dept01(deptno);
+
+
+
+/* 참조 당하는 컬럼(부모, 주) 삭제
+1. 자식 table에서 미사용되는 데이터에 한해서는 삭제가 가능하다.
+2. 자식 table에서 사용되는 컬럼이더라도 삭제하는 명령어도 존재한다.
+	- 현업에선 부득이하게 이미 개발중에 table 구조를 변경해야 할 경우가 간혹 발생한다.
+	- 자식의 존재를 완전 무시하고 부모 table을 삭제하는 경우이다.
+*/
+-- 1.
+delete from dept01 where deptno >= 60;
+
+-- 2. 
+drop table dept01 cascade constraint;
+
