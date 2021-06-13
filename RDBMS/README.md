@@ -21,6 +21,8 @@
 
 ### :pushpin:[rownum](./10Rownum.sql)
 
+### :pushpin:[sequence](./11Sequence.sql)
+
 <details>
     <summary><strong>:pushpin: 참고 사항.md</strong></summary><br>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 참고 사이트<br>
@@ -33,4 +35,5 @@
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 불필요한 table 삭제 명령어<br>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 데이터 타입<br>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- REM(주석)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 실행 속도 확인 명령어<br>
 </details>
