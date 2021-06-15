@@ -67,5 +67,5 @@ def book_update(book):
 
 if __name__ == '__main__':
     b1 = Book('python', '로드반썸', 10000)
-    book_insert(b)
+    book_insert(b1)
     book_update(Book('python', '유재석', 7000))
