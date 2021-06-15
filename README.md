@@ -11,12 +11,12 @@
 
 <br>
 
-## Web FramWork
+## :closed_book: Web FramWork
 - [**flask**](./Flask)
 
 <br>
 
-## 확장 Module
+## :orange_book: 확장 Module
 Oracle DB와 python을 연동하는 방법에 대해 공부
 - [**cx_Oracle**](./cx_Oracle)
 <br>
