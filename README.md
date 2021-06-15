@@ -7,10 +7,11 @@
 ## 📂 Language
 - [**python**](./python)
 - [**RDBMS**](./RDBMS)
+- [**JavaScript**](./JavaScript)
 
 <br>
 
-## FramWork
+## Web FramWork
 - [**flask**](./Flask)
 
 <br>
@@ -24,3 +25,4 @@ Oracle DB와 python을 연동하는 방법에 대해 공부
 공부한 이론으로 간단한 문제들을 만듭니다.
 - [**about python**](./test/python)
 - [**about RDBMS**](./test/RDBMS)
+- [**about cs_Oracle**](./test/cx_Oracle)

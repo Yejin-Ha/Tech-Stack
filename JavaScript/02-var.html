@@ -1,0 +1,60 @@
+<!-- 
+# 구성 요소
+1. 변수 : 타입 선언없이 변수명으로만 선언 가능
+    - 전역 변수
+    - 지역 변수
+2. 함수 
+    - 클래스에 포함된 멤버 함수(메소드)
+    - 클래스와 독립적으로 개발 가능한 함수
+
+
+# 변수 선언 문법(4가지) 
+1. 전역 변수로 선언 - 변수명으로만 선언
+    <변수명> = <값>;
+
+2. 지역 변수로 선언 
+    - 값 수정 가능하도록 선언
+        var <변수명> = [값];
+            -> var을 사용할 경우 변수명이 같도록 여러번 선언해도 에러가 나지 않는다.(추후에 혼란 생길 수 있음)
+        let <변수명> = [값];
+            -> let을 사용시 var과 다르게 같은 변수명이 선언되면 에러가 나온다.(const도 마찬가지다.)
+            -> var보다 let을 사용하자 :)
+
+    - 값이 수정 불가능하게 선언
+        const <변수명> = [값];
+
+
+# js 코드 구현 위치
+1. <head> tag 내부에 개발
+2. <body> tag 내부에 개발
+-> 둘 다 가능하다. 하지만 Html을 읽는 과정에서 script tag를 만나면 중단 시점이 생기고 화면에 딜레이가 생길 수 있기 때문에
+-> <body> tag에 구현하는 것을 선호한다.
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 4개의 변수를 선언하는 함수를 구현
+        function myfun1() {
+            v1 = 1;
+            var v2 = 2;
+            let v3 = "3";
+            const v4 = 4;
+        }   // 괄호가 닫기면서 v2, v3, v4는 소멸된다.(지역 변수라서)
+        
+        function myfun2() {
+            console.log(v1);    // v1은 전역변수로 선언되어서 에러가 나지 않는다.
+        }
+
+        myfun2();   // 구현만 되어있던 함수 호출
+
+    </script>
+</body>
+</html>
