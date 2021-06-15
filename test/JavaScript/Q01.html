@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="test" onclick="fun()">member list</button>
+    <div id="list"></div>
+
+    <script>
+        function fun() {
+            document.getElementById("list").innerHTML = `
+            <form>
+                <input type="radio" id="p1" name="name" value="손유진">
+                <label for="p1">손유진</label><br>
+                <input type="radio" id="p2" name="name" value="이유경">
+                <label for="p2">이유경</label><br>
+                <input type="radio" id="p3" name="name" value="이현수">
+                <label for="p3">이현수</label><br>
+                <input type="radio" id="p4" name="name" value="하예진">
+                <label for="p4">하예진</label>
+          </form> `
+        }
+    </script>
+</body>
+
+</html>
