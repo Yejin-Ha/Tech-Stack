@@ -1,0 +1,104 @@
+<!--  
+# 함수
+1. 내장 함수(library)
+    1. alert() - 메세지 + 확인버튼
+    2. document.write() - body에 출력 함수
+    3. console.log() - 개발자 디버깅용 출력 함수(브라우저 콘솔창에 출력)
+
+2. 사용자 정의 함수 개발 및 호출
+    1. function <함수명>() {
+        로직
+    }
+    2. 익명 함수
+    3. 구현하자 마자 자동 실행되는 구조의 즉시 실행 함수
+    ...
+
+* 함수에서 return이 사용될 경우 해당 함수를 호출할 때 console.log()를 사용해서 호출해야 한다.
+
+# 코드 분해
+1. document : html 문서 자체 의미
+2. getElementById('one') : id가 one인 객체를 의미한다.
+3. value : 검색된 tag의 value 속성값을 의미
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3>input tag 두개를 개발후에 데잍터값을 서로 change하는 기능의 함수 구현</h3>
+    <br>
+
+    <hr>
+    1. 동적 화면 구성<br>
+    2. 구현 후 실행 후 client가 버튼 클릭하는 동작이 실행되어야만 로직이 완전히 실행 <br>
+    3. 버튼 클릭(event) 시점은 정확히 몇분 몇초인지는 모름, 버튼에 감지기(listener) 세팅()<br>
+    <a href="https://www.w3schools.com/jsref/met_element_addeventlistener.asp">w3schools 학습</a>
+    <br>
+
+    <hr>
+    <!-- js에서 tag들을 명확하게 구분하기 위한 방법
+        document 즉 html 문서 의미하는 객체명 활용
+        수많은 tag들을 명확하게 구분하는 별칭을 활용해서 찾음
+        value 속성 - client가 입력하면 입력된 데이터값 보유 속성 -->
+    <input type="text" id="one" value="encore"> -
+    <input type="text" id="two" value="playdata">
+    <br>
+
+    <button onclick="alert(1)">alert</button>
+    <button onclick="myfun()">change1</button>
+    <button onclick="myfun()">change2</button>
+    <br>
+
+    <hr>
+    <div id="d1"> </div>
+    <div id="d2"> </div>
+
+    <script>
+        // step 01 - input tag의 동적 화면 구성
+        function myfun() {
+            v = document.getElementById('one').value;
+            document.getElementById('one').value = '카카오';
+            alert(v);
+            /*
+            v에는 encore가 대입된다.
+            그 후 카카오로 value를 바꾸고
+            v를 경고창에 보여준다.
+            랜더링 순서는 느리지만 alert가 시각적으로 먼저 출력되기 때문에 랜더링 순서와 변화하는 순서가 다를 수 있다.
+            */
+
+            temp = document.getElementById('one').value;
+            document.getElementById('one').value = document.getElementById('two').value;
+            document.getElementById('two').value = temp;
+        }
+
+        // step 02 - 함수 개발 및 호출 문법
+        function my1(v) {
+            console.log(v);
+        }
+        my1(1);     // 1
+        my1(2, 3);  // 2
+        my1();      // undefined
+
+        function my2(v1, v2) {
+            console.log(arguments)
+        }
+
+        my2(1);     // undefined
+        my2(2, 3);  // 3
+        my2();      // undefined
+
+        // step03 - return
+        function my3() {
+            return 1;
+        }
+        console.log(my3())
+    </script>
+</body>
+
+</html>

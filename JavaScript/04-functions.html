@@ -1,0 +1,50 @@
+<!-- # 함수 생성 방법
+1. 일반적인 문법   
+    function <함수명>() {};
+
+2. 익명 함수
+    <함수명> = function () {};
+
+3. 화살표 함수 - python의 lambda와 흡사
+    <함수명> = () => {};
+
+4. 즉시 실행 함수 - 브라우저 실행시 사용자에 의한 이벤트 없이도 바로 실행시켜야 할 로직이 있을 경우에 적합
+    (function <함수명>() {});
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function fun1() {
+            return "일반적인 문법";
+        };
+
+        let fun21 = function () {
+            return "이름 없는 함수(익명함수)";
+        };
+
+        let fun22 = function (v) {
+            return "매개변수가 있는 익명함수" + v;
+        };
+
+        let fun3 = (v) => {
+            return "화살표 함수, 다양하게 사용 가능하니 잘 숙지하기!";
+        };
+
+        (function fun4(v) {
+            return "즉시 실행 함수 " + v;
+        });
+
+    </script>
+</body>
+
+</html>
