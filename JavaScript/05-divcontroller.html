@@ -1,0 +1,45 @@
+<!-- div에 데이터를 동적으로 입출력 하기
+1. innerText : text를 넣는다. 무엇이 들어가든 무조건 문자열로 처리한다. 
+2. innerHtml : tag 형식의 문자열은 tag로 처리한다.
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="div1"></div>
+    <div id="div2"></div>
+
+    <button onclick="div1print()">innerText를 통해 div1에 문자열 출력</button>
+    <button onclick="div2print()">innerHtml를 통해 div2에 html tag 출력</button>
+
+    <script>
+        function div1print() {
+            document.getElementById("div1").innerText = "<b>문자열</b>";
+        }
+
+        function div2print() {
+            // document.getElementById("div2").innerHTML = "<b>문자열</b>";
+            //js 버전업 시에 추가된 문자열 처리 방식 - 백틱 `  내부에 표현하는 모든 것들을 순수 문자열로 처리함
+            //js 관점에선 순수 문자열, 단 div의 innerHTML 속성으로 tag로 자동변환되면서 렌더링 
+            //이 기술로 web page의 동적 처리가 가능 
+            document.getElementById("div2").innerHTML = `<form action="/action_page.php">
+                <label for="fname">First name:</label><br>
+                <input type="text" id="fname" name="fname" value="John"><br>
+                <label for="lname">Last name:</label><br>
+                <input type="text" id="lname" name="lname" value="Doe"><br><br>
+                <input type="submit" value="Submit">
+                </form>`;
+        }
+    </script>
+
+</body>
+
+</html>
