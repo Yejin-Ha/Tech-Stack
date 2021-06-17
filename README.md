@@ -26,3 +26,4 @@ Oracle DB와 python을 연동하는 방법에 대해 공부
 - [**about python**](./test/python)
 - [**about RDBMS**](./test/RDBMS)
 - [**about cs_Oracle**](./test/cx_Oracle)
+- [**about JavaScript**](./test/JavaScript)

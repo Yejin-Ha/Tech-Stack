@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        /* Add padding to containers */
+        .container {
+            padding: 16px;
+        }
+
+        /* Full-width input fields */
+        input[type=text] {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            display: inline-block;
+            border: none;
+            background: #f1f1f1;
+        }
+
+        input[type=text]:focus {
+            background-color: #ddd;
+            outline: none;
+        }
+
+        /* Overwrite default styles of hr */
+        hr {
+            border: 1px solid #f1f1f1;
+            margin-bottom: 25px;
+        }
+
+        /* Set a style for the submit/register button */
+        .registerbtn {
+            background-color: #04AA6D;
+            color: white;
+            padding: 16px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            opacity: 0.9;
+        }
+
+        .registerbtn:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form>
+        <div class="container">
+            <h1>차를 추천해드려요</h1>
+            <p>Please fill in this form to receive a tea recommendation.</p>
+            <hr>
+
+            <label for="feel"><b>기분을 입력하세요.</b></label>
+            <input type="text" placeholder="피곤함 / 불안함 / 스트레스 중에 입력하세요." name="feel" id="feel">
+
+            <input type="button" class="registerbtn" onclick="click_here()" value="찾기">
+        </div>
+    </form>
+
+    <p id="result"></p>
+
+    <script>
+        function click_here() {
+            // console.log(document.getElementById("feel").value);
+
+            feel = document.getElementById("feel").value;
+
+            if (feel != "피곤함" && feel != "불안함" && feel != "스트레스") {
+                document.getElementById("result").innerText = "피곤함 / 불안함 / 스트레스 중에 입력해주세요."
+            } else {
+                for (tea in teas) {
+                    if (feel == tea) {
+                        document.getElementById("result").innerText = "Please drink " + teas[tea].tea_name + " for " + teas[tea].effect;
+                    }
+                }
+            }
+        };
+
+        let teas = {
+            "피곤함": {
+                'tea_name': "쌍화차",
+                'effect': "피로회복",
+            },
+            '불안함': {
+                'tea_name': "캐모마일",
+                'effect': "정서안정",
+            },
+            '스트레스': {
+                'tea_name': "라벤더",
+                'effect': "신경안정",
+            }
+        };
+
+    </script>
+</body>
+
+</html>
