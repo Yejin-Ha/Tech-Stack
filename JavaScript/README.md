@@ -9,4 +9,5 @@ html에 script tag로 적용된 예시들을 확인할 수 있습니다.
 ### - [div controller(innerText, innerHtml)](./05-divcontroller.html)
 ### - [객체 종류, 활용 방법](./06-object.html)
 ### - [this, onblur, json을 이용하여 간단한 화면 구현](./07-jsonApp.html)
+### - [배열(array)](./08-array.html)
 
