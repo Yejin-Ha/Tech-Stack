@@ -6,7 +6,7 @@
 <br>
 
 <details>
-    <summary><strong>:pushpin:Q02. 기분을 입력하여 차(tea) 추천 받기</strong><br>
+    <summary><strong>:pushpin:Q02. 기분을 입력하여 차(tea) 추천 받기</strong><br></summary>
     :+1:<strong>with</strong> 손유진, 이유경, 이현수, 하예진<br>
     :heavy_check_mark:<strong>My role</strong><br>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. css template 코드 정리<br>
