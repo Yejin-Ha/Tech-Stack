@@ -1,0 +1,74 @@
+<!-- 
+# 객체 종류
+1. 객체 리터럴 방식
+    이미 존재하는 객체에서 property 삭제, 데이터 수정, 추가가 가능하다.
+2. JSON(java script object notation) 객체
+    json : 서버에서 사용자에게 데이터 전송 / 클라우드 기반의 설정 정보 / nosql(sql없이도 데이터 crud가 가능한 데이터 저장 포멧)
+    함수를 선언할 수 있다.
+    참고 - nosql(데이터베이스) : Elasticsearch / mongoDB
+3. 생성자를 활용한 객체
+    이미 존재하는 클래스들로 new와 생성자 조합으로 객체를 생성한다.
+    -> python에서는 new 키워드 없이 생성자 호출해서 객체를 생성함
+
+
+# js에서 객체 생성 및 활용 방법
+1. 복합 데이터 구조를 사요하기 위한 포멧
+2. 언어별 객체 지향 또는 객체 기반
+3. html tag(element) / attribute(속성) / text 모두 다 객체로 처리
+4. 주 목적 = js에서 다량의 데이터들을 효율적으로 관리 및 활용할 수 있는 기술 학습
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1. 리터럴 객체
+        let data1 = { name: "예진", age: 24 };
+        console.log(data1.age);             // 24
+        delete data1.age;
+        data1.name = "리터럴 객체";
+        console.log(data1.name, data1.age); // 리터럴 객체 undefined
+
+        // 2. json 객체
+        let data2 = {
+            "p1": {
+                "name": "재석",
+                "age": 49
+            },
+            "p2": {
+                "name": "석진",
+                "age": 52,
+                fullInfo: function () {
+                    return this.name + "의 나이는 " + this.age;
+                }
+            }
+        };
+        console.log(data2.p1);  // {name: "재석", age: 49}
+        console.log(data2.p2);  // {name: "석진", age: 52, fullInfo: ƒ}
+        console.log(data2.p2.fullInfo());   // "석진의 나이는 52"
+        delete data2.p1.age;
+        console.log(data2.p1);  // {name: "재석"}
+        console.log(data2.p2["name"]);  // 석진
+
+        //3. 생성자를 활용한 객체
+        let x1 = new String();
+        let x2 = new String();
+        let y = new Number();
+        let z = new Boolean();
+        console.log(x1.length);  // 0
+        x1 = new String("지석진");
+        x2 = "유재석";
+        console.log(x1); // String {"지석진"}
+        console.log(x2); // 유재석
+    </script>
+</body>
+
+</html>
