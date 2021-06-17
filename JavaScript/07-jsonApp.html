@@ -1,0 +1,78 @@
+<!-- 
+# this
+    this는 포함된 tag(element) 자신을 의미한다.
+    html tag / text는 모두 다 객체로 관리한다.
+    즉 this는 타 언어와 동일하게 해당 객체 자신을 의미하는 표현법
+    -> python에서는 self와 동일
+    -> 안써도 작동은 되지만 쓰는 것을 권장한다.
+
+# onbluer 
+    포인터가 이동하는 것을 감지하는 이벤트 감지기 속성
+    포인터가 이동하는 순간 자동으로 실행되는 속성
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3>버튼을 누르면 json 포멧 데이터를 form input tag에 출력하기</h3>
+    아이디 : <input type="text" id="pid"><br>
+    이름 : <input type="text" id="pname"><br>
+    <br>
+    <button value="1" onclick="print_data(this.value)">1</button>
+    <button value="2" onclick="print_data(this.value)">2</button>
+    <button value="3" onclick="print_data(this.value)">3</button>
+    <button value="4" onclick="print_data(this.value)">4</button>
+    <br><br>
+    <hr>
+    <br>
+    <h3>이름을 입력하면 해당하는 아이디를 출력한다.</h3>
+    조건 = 이벤트 발생 시점 정하기 : 포커스 이동시<br>
+    <br>
+    이름을 입력하세요 : <input type="text" id="person_name" onblur="find_id(this.value)"><br>
+    <br>
+    이름에 해당하는 아이디 : <input type="text" id="person_id"><br>
+    <script>
+        let person_all = {
+            "p1": {
+                "name": "John",
+                "id": 5566
+            },
+            "p2": {
+                "name": "재석",
+                "id": 12
+            },
+            "p3": {
+                "name": "종원",
+                "id": 13
+            },
+            "p4": {
+                "name": "영자",
+                "id": 15
+            }
+        };
+
+        function print_data(no) {
+            const num = "p" + no;
+            document.getElementById("pname").value = person_all[num].name;
+            document.getElementById("pid").value = person_all[num].id;
+        }
+
+        function find_id(input_name) {
+            for (p in person_all) {
+                if (input_name == person_all[p].name) {
+                    document.getElementById("person_id").value = person_all[p].id;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
