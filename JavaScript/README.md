@@ -11,4 +11,5 @@ html에 script tag로 적용된 예시들을 확인할 수 있습니다.
 ### - [this, onblur, JSON 파싱, json을 이용하여 간단한 화면 구현](./07-jsonApp.html)
 ### - [배열(array)](./08-array.html)
 ### - [구글 차트 활용 방법](./09-googleChart.html)
+### - [Ajax 활용 방법](./10_Ajax)
 
