@@ -6,10 +6,24 @@
     -> python에서는 self와 동일
     -> 안써도 작동은 되지만 쓰는 것을 권장한다.
 
+
 # onbluer 
     포인터가 이동하는 것을 감지하는 이벤트 감지기 속성
     포인터가 이동하는 순간 자동으로 실행되는 속성
- -->
+
+    
+# JSON 파싱
+- json 형식의 문자열을 JSON 객체의 object로 변환하는 방법
+1. eval() 사용
+    json 객체로 변환시에는 eval()에는 반드시 () 문자열을 사용해야 한다.
+    string 타입을 array 타입으로 변환하는 기능도 있다.
+    eval()만 사용할 경우 괄호 안에 원하는 js코드를 넣어서 바로 실행할 수 있다.
+        -> eval("document.write(arr[2][0])"); 
+        -> body 부분에 출력하는 함수가 된다.
+
+2. JSON.parse() 사용
+    -> JSON.parse() 사용하는 것을 추천한다.
+-->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -40,7 +54,7 @@
     <br>
     이름에 해당하는 아이디 : <input type="text" id="person_id"><br>
     <script>
-        let person_all = {
+        let person_all_s = `{
             "p1": {
                 "name": "John",
                 "id": 5566
@@ -57,7 +71,11 @@
                 "name": "영자",
                 "id": 15
             }
-        };
+        }`;
+
+        // json 객체로 변환
+        let person_all_e = eval('('+person_all_s+')');
+        let person_all = JSON.parse(person_all_s);
 
         function print_data(no) {
             const num = "p" + no;

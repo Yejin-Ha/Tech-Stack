@@ -1,0 +1,48 @@
+<!--  -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+
+<body>
+    <h3>배열과 json을 서버에서 응답 받았을 때 실제 js에서 사용 가능하도록 구현</h3>
+    버튼을 누르면 하단에 구글 차트가 출력되도록 한다. <br>
+    <button onclick="drawChart(`piechart`)">구글 차트 보기</button>
+    <div id="piechart" style="width: 900px; height: 500px;"></div>
+
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart(div_id) {
+            // google.visualization.arryaToDataTable() : 배열 데이터로 chart 데이터로 사용하겠다는 설정
+            var data = google.visualization.arrayToDataTable([
+                ['Task', 'Hours per Day'],
+                ['Work', 11],
+                ['Eat', 2],
+                ['Commute', 2],
+                ['Watch TV', 2],
+                ['Sleep', 7]
+            ]);
+
+            var options = {
+                title: '오늘의 일과'
+            };
+
+            // 어디에 어떤 차트를 그릴 것인가에 대한 모든 정보를 보유한 객체 생성
+            var chart = new google.visualization.PieChart(document.getElementById(div_id));
+
+            // 실질적으로 차트를 그리는 함수
+            chart.draw(data, options);
+        }
+    </script>
+</body>
+
+</html>
