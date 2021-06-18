@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+
+<body>
+    <h3>Client가 정보를 입력하여 구글 차트 출력하기</h3>
+    <br>
+    <hr><br>
+    항목1 : <input type="text" id="task1"> / 비중 : <input type="text" id="ratio1"> <br>
+    항목2 : <input type="text" id="task2"> / 비중 : <input type="text" id="ratio2"> <br>
+    항목3 : <input type="text" id="task3"> / 비중 : <input type="text" id="ratio3"> <br>
+    항목4 : <input type="text" id="task4"> / 비중 : <input type="text" id="ratio4"> <br>
+    항목5 : <input type="text" id="task5"> / 비중 : <input type="text" id="ratio5"> <br>
+
+    <button onclick="drawChart('piechart')">data 보기</button>
+    <br>
+    <br>
+    <div id="piechart" style="width: 900px; height: 500px;"></div>
+
+
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart(id) {
+            var data = google.visualization.arrayToDataTable([
+                ['Task', 'Hours per Day'],
+                [document.getElementById('task1').value, Number(document.getElementById('ratio1').value)],
+                [document.getElementById('task2').value, Number(document.getElementById('ratio2').value)],
+                [document.getElementById('task3').value, Number(document.getElementById('ratio3').value)],
+                [document.getElementById('task4').value, Number(document.getElementById('ratio4').value)],
+                [document.getElementById('task5').value, Number(document.getElementById('ratio5').value)]
+            ]);
+
+            console.log(data);
+            var options = {
+                title: '나의 하루 일과'
+            };
+            var chart = new google.visualization.PieChart(document.getElementById(id));
+            chart.draw(data, options);
+        }
+
+    </script>
+</body>
+
+</html>
