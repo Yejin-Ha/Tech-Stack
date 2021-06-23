@@ -25,6 +25,8 @@
 
 ### :pushpin:[index](./12Index.sql)
 
+### :pushpin:[PLSql basic syntax](./13PLSql_Syntax_basic.sql)
+
 <details>
     <summary><strong>:pushpin: 참고 사항.md</strong></summary><br>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 참고 사이트<br>
