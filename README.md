@@ -18,7 +18,11 @@
 
 ## :orange_book: 확장 Module
 Oracle DB와 python을 연동하는 방법에 대해 공부
-- [**cx_Oracle**](./cx_Oracle)
+- [**cx_Oracle**](./cx_Oracle) 
+
+python에서 자주 사용하는 library에 대해 공부
+- [**pythonLib**](./pythonLib)
+
 <br>
 
 ## 📝 test

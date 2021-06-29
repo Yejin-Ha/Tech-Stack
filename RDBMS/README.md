@@ -27,6 +27,10 @@
 
 ### :pushpin:[PLSql basic syntax](./13PLSql_Syntax_basic.sql)
 
+### :pushpin:[PLSql procedure syntax](./14PLSqlProcedure.sql)
+
+### :pushpin:[PLSql function syntax](./15PLSqlFunction.sql)
+
 <details>
     <summary><strong>:pushpin: 참고 사항.md</strong></summary><br>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 참고 사이트<br>
