@@ -19,6 +19,10 @@
   1. by : x col의 데이터를 기준으로 정렬한다.
   2. ascending=True : 오름차순
   3. ascending=False : 내림차순
+- df.duplicated() : df에서 중복된 데이터가 존재하면 해당 데이터의 index에 True가 출력된다.
+- df.drop_duplicates() : df에서 중복된 데이터를 삭제하는 메소드
+- df.groupby(col명) : df의 col명인 series의 데이터가 같은 데이터로 그룹화를 한다.
+  - df.groupby(col).sum() : col명으로 그룹화 후 연산이 가능한 series의 값의 합을 도출
 ------
 - pd.to_datetime(날짜 문자열) : 날짜 문자열을 날짜 표현 타입으로 변환하는 메소드
 
@@ -28,7 +32,8 @@
 - np.random : 난수 생성 모듈
   - np.random.randn(x, y) : x행 y열 크기의 실수 난수 배열 생성
   - np.random.randint(x, y) : 범위(x ~ y-1)에 속하는 정수 난수 생성
-
+- np.where(조건식, True의 값, False의 값) : series의 각 데이터가 조건식에서 True이면 True일 때의 데이터를, False면 False일때의 데이터를 넣는다.
+- 
 
 
 
