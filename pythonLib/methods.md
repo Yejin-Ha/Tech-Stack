@@ -19,7 +19,8 @@
   1. by : x col의 데이터를 기준으로 정렬한다.
   2. ascending=True : 오름차순
   3. ascending=False : 내림차순
-
+------
+- pd.to_datetime(날짜 문자열) : 날짜 문자열을 날짜 표현 타입으로 변환하는 메소드
 
 
 # Numpy
@@ -27,4 +28,12 @@
 - np.random : 난수 생성 모듈
   - np.random.randn(x, y) : x행 y열 크기의 실수 난수 배열 생성
   - np.random.randint(x, y) : 범위(x ~ y-1)에 속하는 정수 난수 생성
-  - 
+
+
+
+
+
+
+- `del` df[col명] : dataFrame의 해당 series를 삭제한다.
+
+
