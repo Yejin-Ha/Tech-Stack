@@ -4,6 +4,11 @@
 - s.count() : 결측치(NaN)을 제외한 데이터의 개수를 counting
 - s.fillna(a) : 결측치를 a로 치환
 - s.dropna() : 결측치를 삭제
+- s.transform(x) : s의 데이터들을 x로 치환한다.
+  ```python
+  df.groupby('job')['age'].transform('median') # job으로 데이터를 그룹화하고 각 데이터의 age를 중앙값으로 치환한다.
+  ```
+
 ## DataFrame 함수들
 - pd.date_range(시작일, 범위(period)) : 시작일로 부터 해당 범위 날짜까지 날짜 데이터 생성
 - pd.DataFrame() : DataFrame 생성
@@ -23,9 +28,14 @@
 - df.drop_duplicates() : df에서 중복된 데이터를 삭제하는 메소드
 - df.groupby(col명) : df의 col명인 series의 데이터가 같은 데이터로 그룹화를 한다.
   - df.groupby(col).sum() : col명으로 그룹화 후 연산이 가능한 series의 값의 합을 도출
+- df.shape : df의 크기를 반환 (ex. (3, 2) : 3행 2열)
 ------
 - pd.to_datetime(날짜 문자열) : 날짜 문자열을 날짜 표현 타입으로 변환하는 메소드
-
+- pd.concat([df1, df2], axis=x) : df1과 df2를 병합하는 메소드
+  - axis=1 : 가로로 데이터가 붙음
+  - axis=0 : 세로로 데이터가 붙음 : default
+  - ignore_index=True : 각 df의 index를 무시하고 새롭게 index를 명시해줌
+    - index의 재 정리
 
 # Numpy
 - np.nan : NaN 값
