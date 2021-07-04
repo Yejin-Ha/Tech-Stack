@@ -8,6 +8,7 @@
   ```python
   df.groupby('job')['age'].transform('median') # job으로 데이터를 그룹화하고 각 데이터의 age를 중앙값으로 치환한다.
   ```
+  
 
 ## DataFrame 함수들
 - pd.date_range(시작일, 범위(period)) : 시작일로 부터 해당 범위 날짜까지 날짜 데이터 생성
@@ -36,6 +37,7 @@
   - axis=0 : 세로로 데이터가 붙음 : default
   - ignore_index=True : 각 df의 index를 무시하고 새롭게 index를 명시해줌
     - index의 재 정리
+  
 
 # Numpy
 - np.nan : NaN 값
