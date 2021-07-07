@@ -37,7 +37,7 @@
   - axis=0 : 세로로 데이터가 붙음 : default
   - ignore_index=True : 각 df의 index를 무시하고 새롭게 index를 명시해줌
     - index의 재 정리
-  
+- pd.
 
 # Numpy
 - np.nan : NaN 값
