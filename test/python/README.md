@@ -35,3 +35,11 @@
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. 파일 다듬기, 시각화 자료를 통한 예측
 </details>
 <br>
+
+<details>
+    <summary><strong>:pushpin:Q06. titanic 데이터로 시각화하기</strong></summary>
+    :+1:<strong>with</strong> 반재광(https://github.com/vankze34), 이진의(https://github.com/leejineui)<br>
+    :heavy_check_mark:<strong>My role</strong><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1번 가족수별 생존 확률 전체 진행(데이터 전처리, 아이디어 제공, 시각화)<br>
+</details>
+<br>
