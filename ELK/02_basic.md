@@ -64,6 +64,7 @@
   ```
 
 ### gender가 M인 데이터 검색
+- 다음 두 명령어는 같은 내용을 검색한다.
   ```
   GET account/_search
   {

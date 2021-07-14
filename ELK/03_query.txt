@@ -1,0 +1,420 @@
+# RDBMS의 desc my_index 와 흡사한 기능
+GET my_index
+
+
+# RDBMS의 select * 과 흡사한 기능(where절이 없는 경우)
+GET my_index/_search
+
+
+# id가 1인 doc만 검색
+GET my_index/_doc/1
+
+
+# ES는 my_index를 역색인으로 저장하면서 모든 단어가 term으로 구성이 된다.
+### 색인 : 키워드를 찾아보기 쉽도록 정렬/나열한 목록
+### 역색인 : 키워드를 통해 문서를 찾아내는 방식
+# -------------------------------------------------------------------------
+# Chrome Google이 형식 또한 Chrome과 Google이 개별 term으로 저장되서 "Chrome Google"로 검색해도 Chrome과 Google을 개별 term으로 검색
+# 즉 순서는 중요하지 않고 포함된 모든 doc를 검색한다.
+# "match"는 or과 같은 역할을 한다.
+### RDBMS에서 select * from my_index where message = 'Chrome' or message = 'Google'; 의 기능
+GET my_index/_search
+{
+  "query": {
+    "match": {
+      "message":"Chrome Google"
+    }
+  }
+}
+
+# pink or green이 포함된 모든 doc 검색
+# 두 term 사이에 문자가 존재하더라도 띄어쓰기만 되어있다면 신경쓰지 않는다.
+GET my_index/_search
+{
+  "query": {
+    "match": {
+      "message":"pink green"
+    }
+  }
+}
+
+
+# slop : query에 term 사이에 특정 term 개수 고정하는 옵션 추가
+# 0이라면 pink와 red는 붙어있고 1이라면 pink와 red 사이에 0~1개의 단어가 존재하는 doc를 모두 가져온다.
+# "match_phrase" : ANd 역할을 한다. slop를 사용하려면 match가 아닌 match_phrase를 사용해야 한다.
+GET my_index/_search
+{
+  "query": {
+    "match_phrase": {
+      "message": {
+        "query": "pink red",
+        "slop": 1
+      }
+    }
+  }
+}
+
+GET my_index/_search
+{
+  "query": {
+    "match_phrase": {
+      "message": {
+        "query": "pink red",
+        "slop": 0
+      }
+    }
+  }
+}
+
+# "slop" 설정 안하면 0으로 간주
+GET my_index/_search
+{
+  "query": {
+    "match_phrase": {
+      "message": {
+        "query": "pink red"
+      }
+    }
+  }
+}
+
+
+# Boolean query
+# 참고 사이트 : https://www.elastic.co/guide/en/elasticsearch/reference/7.13/query-dsl-bool-query.html
+# 01 - should : 일치하는 검색 결과의 점수를 더 높게 배정하는 방법
+# 02 - must : 참인 결과값 검색
+GET my_index/_search
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "match": {
+            "message": "pink blue"
+          }
+        }
+      ],
+      "should": [
+        {
+          "match_phrase": {
+            "message": "pink blue"
+          }
+        }
+      ]
+    }
+  }
+}
+
+
+# 03 - filter : 참인 문서를 검색, 단 score 계산하지 않고 빠른 검색이 가능하다.
+GET my_index/_search
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "match": {
+            "message": "google"
+          }
+        }
+      ],
+      "filter": [
+        {
+          "bool": {
+            "must_not": [
+              {
+                "match" : {
+                  "message": "Google"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
+
+
+
+# range query
+# gte[greater than or equal] - 이상
+# gt[greater than] - 초과
+# lte[Less than or equal] - 이하
+# lt[less than] - 미만
+GET account/_search
+{
+  "query": {
+    "range": {
+      "age": {
+        "gte": 20,
+        "lte": 30
+      }
+    }
+  }
+}
+
+
+# 기존까지는 데이터로 index(table) 직접 생성하였지만 지금은 movie_search index는 구조부터 직접 생성해본다.
+# REST API 관점에서 - POST(새로 생성, 수정), PUT(수정, 생성)이고 ES에서는 POST는 수정 권장, PUT은 새로 생성 권장이다.
+# RDBMS의 table 생성과 동일한 작업이다. 
+PUT movie_search
+{
+  "mappings": {
+    "properties": {
+      "movieCd": {
+        "type": "keyword"
+      },
+      "movieNm": {
+        "type": "text",
+        "analyzer": "standard"
+      },
+      "movieNmEn": {
+        "type": "text",
+        "analyzer": "standard"
+      },
+      "prdtYear": {
+        "type": "integer"
+      },
+      "openDt": {
+        "type": "integer"
+      },
+      "typeNm": {
+        "type": "keyword"
+      },
+      "prdtStatNm": {
+        "type": "keyword"
+      },
+      "nationAlt": {
+        "type": "keyword"
+      },
+      "genreAlt": {
+        "type": "keyword"
+      },
+      "repNationNm": {
+        "type": "keyword"
+      },
+      "repGenreNm": {
+        "type": "keyword"
+      },
+      "companies": {
+        "properties": {
+          "companyCd": {
+            "type": "keyword"
+          },
+          "companyNm": {
+            "type": "keyword"
+          }
+        }
+      },
+      "directors": {
+        "properties": {
+          "peopleNm": {
+            "type": "keyword"
+          }
+        }
+      }
+    }
+  }
+}
+
+
+# movieNm이 "기묘한 가족"인 doc 검색
+# 기묘한 가족 -> text라서 기묘한, 가족으로 term으로 구분해서 저장
+# movieNm field의 type이 text라서 3개의 결과값이 출력된다.
+# 결론 : text 타입 따라서 기묘한 또는 가족으로 검색이 성립된다.
+GET movie_search/_search
+{
+  "size": 20, 
+  "query": {
+    "match": {
+      "movieNm": "기묘한 가족"
+    }  
+  }
+}
+
+# multi_match : 여러개의 field 대상으로 검색
+# 다중 field 중에 하나만이라도 포함되어 있다면 검색되는 로직
+# 영문 데이터인 경우 대소문자 구분없음 
+GET movie_search/_search
+{
+  "query": {
+    "multi_match": {
+      "query": "family",
+      "fields": ["movieNm", "movieNmEn"]
+    }
+  }
+}
+
+# 대표 장르가 코미디, 제작 국가는 한국인 영화 중 영화 타입이 단편을 제외한 doc 검색
+GET movie_search/_search
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "term": {
+            "repGenreNm": {
+              "value": "코미디"
+            }
+          }
+        },
+        {
+          "match": {
+            "repNationNm": "한국"
+          }
+        }
+      ],
+      "must_not": [
+        {
+          "match": {
+            "typeNm": "단편"
+          }
+        }
+      ]
+    }
+  }
+}
+
+# prefix query - 전체를 치지 않아도 괜찮음
+GET movie_search/_search
+{
+  "query": {
+    "prefix": {
+      "movieNm": {
+        "value": "살아남은"
+      }
+    }
+  }
+}
+
+GET movie_search/_search
+{
+  "query": {
+    "prefix": {
+      "movieNm": {
+        "value": "살"
+      }
+    }
+  }
+}
+
+GET movie_search/_mapping
+
+# openDt field 값만 검색
+GET movie_search/_search
+{
+  "size": 20,
+  "_source": "openDt"
+}
+
+# exists : 해당 field에 데이터가 존재하는 doc만 출력(null이 아닌 데이터 검색)
+GET movie_search/_search
+{
+  "_source": "openDt",
+  "query": {
+    "exists": {
+      "field": "openDt"
+    }
+  }
+}
+
+# * : 0 ~ 무한대
+# + : 1 ~ 무한대
+# ? : 없거나 하나이거나
+# es에서는 철자 하나를 의미함
+
+# 장르 구분해서 검색
+# wildcard(*) 를 활용한 검색
+# 장으로 시작하는  장ㄹ 데이터 검색
+GET movie_search/_search
+{
+  "query": {
+    "wildcard": {
+      "typeNm": {
+        "value": "장*"
+      }
+    }
+  }
+}
+
+GET movie_search/_search
+{
+  "query": {
+    "wildcard": {
+      "typeNm": {
+        "value": "장?"
+      }
+    }
+  }
+}
+
+GET movie_search/_search
+{
+  "query": {
+    "wildcard": {
+      "typeNm": {
+        "value": "장??"
+      }
+    }
+  }
+}
+
+
+#####
+DELETE string_index
+
+PUT string_index
+{
+  "mappings": {
+    "properties": {
+      "data1" : {
+        "type": "text"
+      },
+      "data2" : {
+        "type": "keyword"
+      }
+    }
+  }
+}
+
+GET string_index/_mapping
+
+
+POST string_index/_doc/1
+{
+  "data1":"pink red blue",
+  "data2":"pink red blue"
+}
+
+
+GET string_index/_search
+
+
+GET string_index/_search
+{
+  "query": {
+    "match": {
+      "data1": "pink"
+    }
+  }
+}
+
+# keyword 타입으로 term 단위로 검색 시도시 검색 불가 
+GET string_index/_search
+{
+  "query": {
+    "match": {
+      "data2": "pink"
+    }
+  }
+}
+
+GET string_index/_search
+{
+  "query": {
+    "match": {
+      "data2": "pink red blue"
+    }
+  }
+}

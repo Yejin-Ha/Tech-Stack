@@ -3,3 +3,8 @@
 
 ### - [기초 설명](./01_intro.md)
 ### - [기초 문법 정리](./02_basic.md)
+### - [다양한 query 정리(ex. Boolean query, Range query)](./03_query.md)
+
+
+
+### - [전체 메소드 정리](./methods.md)
