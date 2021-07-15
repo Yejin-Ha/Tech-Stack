@@ -142,5 +142,5 @@ PUT movie_index
 ```
 
 ## text와 keyword 구분
-- text type : 
-- keyword type : 
+- text type : 띄어쓰기를 기준으로 단어를 구분한다.
+- keyword type : 전체를 하나의 단어로 인식한다.(띄어쓰기가 포함되어도 하나로 인식한다.)
