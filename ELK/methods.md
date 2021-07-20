@@ -144,3 +144,38 @@ PUT movie_index
 ## text와 keyword 구분
 - text type : 띄어쓰기를 기준으로 단어를 구분한다.
 - keyword type : 전체를 하나의 단어로 인식한다.(띄어쓰기가 포함되어도 하나로 인식한다.)
+
+
+## 다중 field에서 데이터 검색
+- multi_match : 여러개의 field를 대상으로 데이터를 검색하는 명령어
+  - "query" : 찾을 데이터
+  - "fields" : list형식의 field 이름들
+```
+<!-- movieNm, movieNmEn field에서 family 데이터를 검색 -->
+GET movie_search/_search
+{
+  "query": {
+    "multi_match": {
+      "query": "family",
+      "fields": ["movieNm", "movieNmEn"]
+    }
+  }
+}
+```
+
+## prefix query
+- 데이터가 일치하거나 포함된 모든 데이터를 검색한다.
+```
+<!-- '살아남'과 일치하거나 살아남이 포함된 모든 데이터 검색(ex. 살아남은 아이) -->
+GET movie_search/_search
+{
+  "query": {
+    "prefix": {
+      "movieNm": {
+        "value": "살아남"
+      }
+    }
+  }
+}
+```
+

@@ -218,14 +218,13 @@ PUT movie_search
   }
 }
 
-+++++++++++++++++++++++++++++++++++++++++++++++여기까지 공부! ++++++++++++++++++++++++++++++++++++++++++
+
 # movieNm이 "기묘한 가족"인 doc 검색
 # 기묘한 가족 -> text라서 기묘한, 가족으로 term으로 구분해서 저장
 # movieNm field의 type이 text라서 3개의 결과값이 출력된다.
-# 결론 : text 타입 따라서 기묘한 또는 가족으로 검색이 성립된다.
+# 결론 : 기묘한 또는 가족으로 검색이 성립된다.
 GET movie_search/_search
 {
-  "size": 20, 
   "query": {
     "match": {
       "movieNm": "기묘한 가족"
@@ -233,9 +232,11 @@ GET movie_search/_search
   }
 }
 
+
 # multi_match : 여러개의 field 대상으로 검색
-# 다중 field 중에 하나만이라도 포함되어 있다면 검색되는 로직
-# 영문 데이터인 경우 대소문자 구분없음 
+#   다중 field 중에 하나만이라도 포함되어 있다면 검색되는 로직
+#   영문 데이터인 경우 대소문자 구분없음 
+# movieNm, movieNmEn에서 family가 들어간 doc를 모두 검색
 GET movie_search/_search
 {
   "query": {
@@ -245,6 +246,7 @@ GET movie_search/_search
     }
   }
 }
+
 
 # 대표 장르가 코미디, 제작 국가는 한국인 영화 중 영화 타입이 단편을 제외한 doc 검색
 GET movie_search/_search
@@ -276,6 +278,7 @@ GET movie_search/_search
   }
 }
 
+
 # prefix query - 전체를 치지 않아도 괜찮음
 GET movie_search/_search
 {
@@ -288,17 +291,8 @@ GET movie_search/_search
   }
 }
 
-GET movie_search/_search
-{
-  "query": {
-    "prefix": {
-      "movieNm": {
-        "value": "살"
-      }
-    }
-  }
-}
 
++++++++++++++++++++++++++++++++++++++++++++++++여기까지 공부! ++++++++++++++++++++++++++++++++++++++++++
 GET movie_search/_mapping
 
 # openDt field 값만 검색
