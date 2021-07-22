@@ -144,6 +144,50 @@ PUT movie_index
 ## text와 keyword 구분
 - text type : 띄어쓰기를 기준으로 단어를 구분한다.
 - keyword type : 전체를 하나의 단어로 인식한다.(띄어쓰기가 포함되어도 하나로 인식한다.)
+- 다음은 text type과 keyword type의 차이를 보여주는 예시이다.
+  ```
+  <!-- data1은 text type, data2는 keyword type으로 설정한다. -->
+  PUT string_index
+  {
+  "mappings": {
+    "properties": {
+      "data1" : {
+        "type": "text"
+      },
+      "data2" : {
+        "type": "keyword"
+        }
+      }
+    }
+  }
+
+  <!-- 동일한 데이터 insert -->
+  POST string_index/_doc/1
+  {
+    "data1":"pink red blue",
+    "data2":"pink red blue"
+  }
+
+  <!-- data1은 text라서 term단위로 구분되기 때문에 검색 결과가 나온다. -->
+  GET string_index/_search
+  {
+    "query": {
+      "match": {
+        "data1": "pink"
+      }
+    }
+  }
+
+  <!-- data2는 keyword이기 때문에 term 단위로 구분되지 않아서 pink를 검색하면 데이터가 나오지 않는다. -->
+  GET string_index/_search
+  {
+    "query": {
+      "match": {
+        "data2": "pink"
+      }
+    }
+  }
+  ```
 
 
 ## 다중 field에서 데이터 검색
@@ -178,4 +222,56 @@ GET movie_search/_search
   }
 }
 ```
+
+## 특정 field의 값 검색
+- index 전체에서 원하는 field의 내용을 검색하기
+  - "_source" 이용
+  - "exists" 를 통해서 값이 존재하는 데이터만 출력 가능하다.
+```
+<!-- index 전체에서 openDt의 데이터를 5개만 출력한다. -->
+GET movie_search/_search
+{
+  "_source": "openDt",
+  "size": 5
+}
+
+<!-- openDt의 null이 아닌 데이터만 검색 -->
+GET movie_search/_search
+{
+  "_source": "openDt",
+  "query": {
+    "exists": {
+      "field": "openDt"
+    }
+  }
+}
+```
+
+## 원하는 단어 검색하기
+- 다음의 문자들로 다양한 검색이 가능하다.
+  - "wildcard" 를 통해 검색이 가능하다. 
+     - * : 0 ~ 무한대
+     - + : 1 ~ 무한대
+     - ? : 없거나 하나이거나
+```
+GET movie_search/_search
+{
+  "query": {
+    "wildcard": {
+      "typeNm": {
+        "value": "장*"    <!-- typeNm의 value가 장으로 시작하는 데이터를 검색 --!>
+        or
+        "value": "장?"    <!-- typeNm의 value가 장_인 데이터 검색 --!>
+        or
+        "value": "장??"   <!-- typeNm의 value가 장__인 데이터 검색 --!>
+      }
+    }
+  }
+}
+```
+
+
+
+
+
 
