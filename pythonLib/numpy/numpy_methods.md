@@ -35,9 +35,21 @@
   - x의 값을 변경하는 것이 아닌 새로운 배열을 반환한다.(새로운 배열로 선언하여 사용해야 한다.)
   - y -> np.int32 or 'int32'
 
-- np.zeros((size))
+- np.zeros(shape, dtype)
+- np.ones(shape, dtype)
   - 모든 데이터가 0인 (size)의 행렬을 생성한다.
-  - 
+  - 튜플()이나 리스트[] 중 원하는 형태로 넣으면 된다.
+  - dtype : 데이터 타입 설정
+
+- np.full(shape, fill_value, dtype)
+  - shape : 형태(크기, 개수) 지정
+  - fill_value : 채울 값
+  - dtype : 데이터 타입 지정
+- np.zeros_like(x), np.ones_like(x)
+  - 배열 x와 같은 shape의 0 또는 1로 값을 채운 배열 생성
+  ```python
+  a = np.full(10, fill_value=5)
+  ```
 <br>
 <br>
 <br>
