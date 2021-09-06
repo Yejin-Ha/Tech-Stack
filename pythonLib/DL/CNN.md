@@ -41,6 +41,7 @@
 - Handcrafted
 - End to End learning
 
+
 ## CNN
 - 이미지로 부터 부분적 특성을 추출하는 Feature Extraction 부분과 분류를 위한 Classification 부분으로 나눈다.
 - Feature Extraction 부분에 이미지 특징 추출에 성능이 좋은 Convolution Layer를 사용한다.
