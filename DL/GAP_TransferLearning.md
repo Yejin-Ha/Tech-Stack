@@ -1,15 +1,7 @@
 # GAP (GlobalAveragePooling)
 - channel이 많으면 GAP를 쓰고 channel이 적으면 flatten을 쓴다.
 - Feature map의 채널별로 평균값을 추출 1 x 1 x channel 의 Feature map을 생성
-- 
-# Transfer learning 전이학습
-- 큰 데이터 셋을 이용해 미리 학습된 pre-trained Model의 Weight를 사용하여 현재 하려는 예측 문제에 활용.
-- 예시 : 개/고양이를 분류하는 모델의 convolution base를 사용하여 새로운 classifier해서 늑대/이리/여우를 분류하는 모델 생성
-
-## Keras에서 제공하는 Pre-Trained Model
-- tensorflow.keras.applications 패키지를 통해 제공
-    - [참고 사이트](https://www.tensorflow.org/api_docs/python/tf/keras/applications?hl=ko)
-
+  
 ## 주요 CNN 모델
 ### VGG16 모델
 - ImageNet ILSVRC Challenge 2014에서 2등한 모델로 Simonyan and Zisserman(Oxford Univ.)에 의해 제안
@@ -49,3 +41,37 @@
     - 충분히 납득할 만한 정확도
     - 저전력 사용
     - 즉 기존의 성능만을 신경쓴 모델 보다 적은 연산량으로 빠르게 추론할 수 있으되 성능이 납득할 수 있어야 한다.
+
+# Pretrained Model을 이용한 학습
+## 1. Transfer learning 전이학습
+  - 큰 데이터 셋을 이용해 미리 학습된 pre-trained Model의 Weight를 사용하여 현재 하려는 예측 문제에 활용.
+  - 예시 : 개/고양이를 분류하는 모델의 convolution base를 사용하여 새로운 classifier해서 늑대/이리/여우를 분류하는 모델 생성
+
+  - ### Keras에서 제공하는 Pre-Trained Model
+    - tensorflow.keras.applications 패키지를 통해 제공
+      - [참고 사이트](https://www.tensorflow.org/api_docs/python/tf/keras/applications?hl=ko)
+
+## 2. 미세조정 Fine-tuning
+- 아래의 세 전략 모두 Classifier layer들을 train한다.
+  1. 전체 모델을 학습시킨다.
+       - train dataset의 양이 많고 학습했던 dataset과 train dataset의 유사성이 낮은 경우 적용
+       - 학습에 시간이 많이 걸린다.
+  2. Pretrain 모델의 일부는 freezing 하고 일부만 학습시킨다.
+     - train dataset의 양이 많고 유사성이 학습했던 dataset과 train dataset의 높은 경우 적용
+     - train dataset의 양이 적고 유사성이학습했던 dataset과 train dataset의  낮은 경우 적용
+  3. Pretrained 모델 전체를 freezing하고 classifier만 학습시킨다.
+        - train dataset의 양이 적고 학습했던 dataset과 train dataset의 유사성이 높은 경우 적용
+
+## Model, layer에서 weight 조회
+- layer들 조회
+    - model객체.layers : 모델을 구성하는 layer 객체들을 담은 리스트
+    - model객체.get_layer(layer이름(str)) : 매개변수로 전달한 이름의 layer 객체를 반환
+- weigt 조회 및 설정
+    1. 조회
+       - weights : 레이어의 모든 weight 변수들을 담은 리스트
+         - get_weights() : 레이어의 모든 weight 변수 리스트를 카피해서 반환한다.
+       - trainable_weights : train(학습)시 업데이트 되는 weights들 리스트
+       - non_trainable_weights : train(학습)시 업데이트 되지 않는(훈련되지 않는) weights 리스트
+    2. boolean 값을 가지는 trainable 제공
+        - trainable=False : layer의 weights가 훈련 불가능 상태로 변경된다.
+        - 이런 상태를 Frozen-동결 이라고 하며 학습시 weight들이 업데이트 되지 않는다.
