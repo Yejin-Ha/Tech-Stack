@@ -27,3 +27,17 @@
 
 ## Object Detection 성능 평가
 ## 1. IoU(Intersection Over Union, Jaccard overlap)
+- 모델이 예측한 Bounding Box(bbox)와 Ground Truth Bounding Box가 **얼마나 겹치는지**를(Overlap) 나타내는 평가 지표이다.
+    - 두개의 Bounding Box가 일치할 수록 1에 가까운 값이 나오고 일치하지 않을 수록 0에 가까운 값이 계산된다.
+- **일반적으로 IoU값 0.5를 기준으로 그 이상이면 검출한 것으로 미만이면 잘못찾은 것(제거)으로 한다.**
+    - 이 기준이 되는 값을 IoU Threshold(임계값) 라고 한다.
+    - 0.5 수치는 ground truth와 66.% 이상 겹쳐(overlap)되야 나오는 수치 이면 사람의 눈으로 봤을때 잘 찾았다고 느껴지는 수준이다.
+$$IoU = \cfrac{두\,영역의\,교집합\,영역}{두\,영역의\,합집합\,영역}$$
+
+## 2. mAP (mean Average Precision)
+> precision : True(양성)라고 예측한 것 중 True(양성)인 확률
+> $$precision = \cfrac{TP}{TP\,+\,FP}$$
+- 여러개의 실제 Object가 검출된 재현율(Recall)의 변화에 따른 정밀도(Precision) 값을 평균화 한 것
+- mAP를 이해하기 위해선 precision, recall, precision-recall curve, AP(Average Precision)을 이해 해야 한다.
+    > precision-recall curve, AP(Average Precision)는 Object Detection(물체 검출) 알고리즘 성능 평가를 위해 사용되는 방법중 하나이다.
+
