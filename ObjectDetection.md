@@ -65,7 +65,9 @@ $$IoU = \cfrac{두\,영역의\,교집합\,영역}{두\,영역의\,합집합\,영
 - Object Dection 알고리즘은 Object가 있을 것이라 예측하는 위치에 여러개의 bounding Box들을 예측한다.
 - NMS는 Detect(검출)된 Bounding Box들 중에서 비슷한 위치에 있는 겹치는bbox들을 제거하고 가장 적합한 bbox를 선택하는 방법이다.
 
-
-
-
-
+#### NMS 실행 로직
+1. Detect(검출)된 Bounding Box 중 **Confidence threshold (신뢰 임계값) 이하의 박스들을 제거**한다. (confidence threshold는 하이퍼파라미터)
+    >Confidence score: bounding box 내에 object(물체)가 있을 확률   
+2. 가장 높은 **confidence score를 가진 bounding box 순서대로 내림차순 정렬**을 한 뒤 높은 confidence score를 가진 bounding box와 겹치는 다른 bounding box를 모두 조사하여 IoU가 특정 threshold(임계값) 이상인 bounding box들을 모두 제거한다. (ex: IoU threshold > 0.5)
+    - 가장 높은 confidence score를 가진 bounding box와 IoU가 높게 나온다는 것은 그만큼 겹치는 박스이므로 같은 물체를 예측한 bounding box일 가능성이 높다.
+    - 이 작업을 남아있는 모든 bounding box에 적용한 뒤 남아있는 박스만 선택한다.
