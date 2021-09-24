@@ -31,8 +31,9 @@
     - 두개의 Bounding Box가 일치할 수록 1에 가까운 값이 나오고 일치하지 않을 수록 0에 가까운 값이 계산된다.
 - **일반적으로 IoU값 0.5를 기준으로 그 이상이면 검출한 것으로 미만이면 잘못찾은 것(제거)으로 한다.**
     - 이 기준이 되는 값을 IoU Threshold(임계값) 라고 한다.
-    - 0.5 수치는 ground truth와 66.% 이상 겹쳐(overlap)되야 나오는 수치 이면 사람의 눈으로 봤을때 잘 찾았다고 느껴지는 수준이다.
+    - **0.5 수치는 ground truth와 66.% 이상 겹쳐(overlap)되야 나오는 수치 이면 사람의 눈으로 봤을때 잘 찾았다고 느껴지는 수준이다.**
 $$IoU = \cfrac{두\,영역의\,교집합\,영역}{두\,영역의\,합집합\,영역}$$
+> Ground Truth Bounding Box : 정답 영역
 
 ## 2. mAP (mean Average Precision)
 > precision : True(양성)라고 예측한 것 중 True(양성)인 확률
@@ -40,3 +41,31 @@ $$IoU = \cfrac{두\,영역의\,교집합\,영역}{두\,영역의\,합집합\,영
 - 여러개의 실제 Object가 검출된 재현율(Recall)의 변화에 따른 정밀도(Precision) 값을 평균화 한 것
 - mAP를 이해하기 위해선 precision, recall, precision-recall curve, AP(Average Precision)을 이해 해야 한다.
     > precision-recall curve, AP(Average Precision)는 Object Detection(물체 검출) 알고리즘 성능 평가를 위해 사용되는 방법중 하나이다.
+
+### precision과 recall의 trade off(반비례관계)
+-  Confidence threshold: 지정된 값 이상의 confidence를 가진 결과만 예측결과로 사용하고 그 이하인 것들은 무시한다. 이 값을 0.5로 설정하면 confidence score가 0.5 미만인 결과(0.1,0.2,0.3등)는 무시한다.이 값은 하이퍼파라미터이다.
+  
+1. confidence threshold를 높게 잡은 경우
+    - 확신의 정도(Confidence Score)가 아주 높은 경우만 검출하기 때문에 예측한 것이 얼마나 맞았는지에 대한 지표인 Precision지표는 높게 나온다.
+    - 확신의 정도(Confidence Score)가 낮으면 detect하지 않으므로 실제 물제를 얼만큼 검출했는지에 대한 지표인 recall지표는 낮게 나온다.
+
+2. confidence threshold를 낮게 잡은 경우
+    - 확신의 정도(Confidence Score)가 낮은 것들도 예측 했으므로 잘못 검출한 결과가 많아지므로 Precision지표는 낮게나온다.
+    - 낮은 확신의 정도(Confidence Score)인 것들도 검출하기 때문에 실제 물체를 더 많이 검출하게 되어 recall 지표가 올라간다.
+
+- 정리
+    - confidence threshold를 낮게 잡으면 precision은 낮게 recall은 높게 나온다.
+        - recall이 올라가면 precision은 낮아진다.
+    - confidence threshold를 높게 잡으면 precision은 높게 recall은 낮게 나온다.
+        - precision이 올라가면 recall은 낮아진다.
+
+
+## 3. Model 추론 결과 후처리(Post Processing)
+### NMS (Non Max Suppression)
+- Object Dection 알고리즘은 Object가 있을 것이라 예측하는 위치에 여러개의 bounding Box들을 예측한다.
+- NMS는 Detect(검출)된 Bounding Box들 중에서 비슷한 위치에 있는 겹치는bbox들을 제거하고 가장 적합한 bbox를 선택하는 방법이다.
+
+
+
+
+
