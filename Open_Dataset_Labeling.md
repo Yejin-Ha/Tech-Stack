@@ -51,3 +51,8 @@
     - https://aihub.or.kr/
 
 ## 이미지 수집
+- google images download 라이브러리
+    - 다운받고 싶은 이미지 keyword를 입력하면 구글에서 이미지 검색해서 다운로드 하는 라이브러리
+    - CLI (Command Line Interface) 환경에서 명령어를 이용해 다운받는 방법과 python 코드로 작성해 다운받는 2가지 방식을 다 지원한다.
+    - doc: https://google-images-download.readthedocs.io/en/latest/installation.html
+    - github : https://github.com/Joeclinton1/google-images-download
