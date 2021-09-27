@@ -91,10 +91,22 @@
     - positive : negative = 1 : 3 비율
 
 ### 2-3-2. Loss Function
+- SSD는 분류(Classification) 결과보다 위치(Location) 값을 찾는 것을 더 중요하게 생각한다.
 - multi-task loss
+    - 결과가 2개 이상이 나올 경우의 loss를 구하는 것(SSD에서는 결과로 location, classification가 나온다.)
     - classification 예측 결과에 대한 오차로 cross entropy 를 사용한다.
     - bounding box의 좌표 예측에 대한 오차로 $smooth_{L1} loss$를 사용한다. 
     - 이 두개의 오차를 합쳐 최종 loss를 구한다.
 
 > - $\large smooth_{L1} loss$
 >    - 실제값과 예측값의 MSE를 구한다. 그 값이 1보다 작으면 제곱한 값에 0.5곱한 값(절반)을 1이상이면 그 값에서 0.5 뺀 값을 반환한다.
+
+
+
+```python
+"""
+다음의 개념은 알고 넘어가도록 합시당
+- SDD Network 구조
+- Default Box
+"""
+```
