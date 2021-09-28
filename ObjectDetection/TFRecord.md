@@ -21,5 +21,4 @@
     ```
 > **직렬화(Serialization)**: 메모리에 저장된 다양한 타입의 값을 디스크(네트워크)에 저장할 수 있는 상태로 변환하는 것.  
 > **binary data**: 디스크에 저장되는 0, 1로 구성된 데이터  
-
-> DataBase를 예로 들면 col은 Feature, row는 Example, table은 TFRecord라고 보면 된다.
+>    DataBase를 예로 들면 col은 Feature, row는 Example, table은 TFRecord라고 보면 된다.
