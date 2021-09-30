@@ -1,3 +1,21 @@
+# 진행 과정
+0. custom 데이터셋 수집 + labeling
+1. 설치(tensorflow, TFODAPI2)
+2. 설정파일(text) - text 파일 작성, 코드
+    - labelmap.pbtxt
+    - pipeline.config
+3. TFRecord 생성
+4. Pretrained Model 다운로드
+5. 학습
+-----1차------
+모델을 이용한 서비스
+    - 모델 추출(저장)
+    - 추론
+        - input data 전처리(resize, normalize)
+        - predict : 12000개 정도의 bbox를 추론
+        - predict 결과 후처리 : confidence score가 높은 100개의 bbox를 추려낸다.
+
+
 # TFRecord
 - https://www.tensorflow.org/tutorials/load_data/tfrecord
 - Tensorflow에서 제공하는 데이터셋을 저장방식.
@@ -22,3 +40,4 @@
 > **직렬화(Serialization)**: 메모리에 저장된 다양한 타입의 값을 디스크(네트워크)에 저장할 수 있는 상태로 변환하는 것.  
 > **binary data**: 디스크에 저장되는 0, 1로 구성된 데이터  
 >    DataBase를 예로 들면 col은 Feature, row는 Example, table은 TFRecord라고 보면 된다.
+
