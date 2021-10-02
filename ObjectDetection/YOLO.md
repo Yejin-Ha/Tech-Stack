@@ -19,6 +19,7 @@
     - 작은 물체를 잘 감지하지 못하는 문제
 
 
+
 ## Unified Detection
 - End to End
     - 기존 2 Stage Dection과 다르게 YOLO는 후보영역 추출(Region Proposal)과 물체검출 및 분류(Object Dection & Classification)을 통합해 하나의 딥러닝 네트워크가 한번에 처리한다.
