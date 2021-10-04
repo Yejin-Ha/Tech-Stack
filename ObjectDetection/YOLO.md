@@ -33,4 +33,3 @@
         - c는 해당 bounding box에 대한 신뢰도 점수(Confidence), (x,y)는 중심점의 좌표, (w,h)는 bounding box의 너비의 높이
         - Confidence:  𝑃𝑟(𝑂𝑏𝑗𝑒𝑐𝑡)∗𝐼𝑜𝑈𝑡𝑟𝑢𝑡ℎ𝑝𝑟𝑒𝑑
             - 물체가 있을 확률 * IoU점수(Ground truth와 예측bbox간의 겹치는 부분의 넓이)
-
